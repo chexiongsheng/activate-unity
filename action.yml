@@ -16,6 +16,9 @@ inputs:
   unity-serial:
     description: Unity license serial key. Used for Plus/Professional license activation
     required: false
+  project-path:
+    description: for -projectpath
+    required: false
 runs:
   using: node16
   main: src/activate-license.js

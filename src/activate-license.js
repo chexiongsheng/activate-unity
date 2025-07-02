@@ -13,9 +13,10 @@ async function run() {
         const unityPassword = core.getInput('unity-password', { required: true });
         const unityAuthenticatorKey = core.getInput('unity-authenticator-key');
         const unitySerial = core.getInput('unity-serial');
+        const projectPath = core.getInput('project-path');
 
         if (unitySerial) {
-            await unity.activateSerialLicense(unityPath, unityUsername, unityPassword, unitySerial);
+            await unity.activateSerialLicense(unityPath, unityUsername, unityPassword, unitySerial, projectPath);
         } else {
             await exec.exec('npm install puppeteer@"^13.x"', [], { cwd: path.join(__dirname, '..') }); // install puppeteer for current platform
             const licenseRobot = require('./license-robot');
