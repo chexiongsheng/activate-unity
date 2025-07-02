@@ -4,8 +4,7 @@ const fs = require('fs');
 module.exports = { createManualActivationFile, activateManualLicense, activateSerialLicense, returnLicense };
 
 async function activateSerialLicense(unityPath, username, password, serial) {
-    // use '-projectPath ?' for skipping project indexing
-    const stdout = await executeUnity(unityPath, `-batchmode -nographics -quit -logFile "-" -projectPath "?" -username "${username}" -password "${password}" -serial "${serial}"`);
+    const stdout = await executeUnity(unityPath, `-batchmode -nographics -quit -logFile "-" -username "${username}" -password "${password}" -serial "${serial}"`);
     if (!stdout.includes('Next license update check is after')) {
         throw new Error('Activation failed');
     }
